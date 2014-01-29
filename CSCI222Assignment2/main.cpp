@@ -6,6 +6,7 @@
  */
 
 #include <cstdlib>
+#include <mysql++.h>
 
 using namespace std;
 
