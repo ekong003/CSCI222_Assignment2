@@ -10,6 +10,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <string>
 
 
 
@@ -19,13 +20,20 @@
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
 
+using namespace std;
+
 class mydb_class {
 public:
-    mydb_class();
-    DeleteConnection();
-    ExecuteQuery();
+    mydb_class(string,string,string);
+    void DeleteConnection();
+    void ExecuteQuery();
     virtual ~mydb_class();
 private:
+        
+        sql::Driver *driver;
+        sql::Connection *conn;
+        sql::ResultSet *res;
+        sql::Statement *stat;
     
 
 };
