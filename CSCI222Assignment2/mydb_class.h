@@ -11,7 +11,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-
+#include <vector>
 
 
 #include <mysql_connection.h>
@@ -26,14 +26,18 @@ class mydb_class {
 public:
     mydb_class(string,string,string);
     void DeleteConnection();
-    void ExecuteQuery();
+    sql::ResultSet* DbFetchArray(string);
+    int DbInsert(string);
+    bool DbUpdate(string);
+    bool DbDelete(string);
     virtual ~mydb_class();
 private:
         
         sql::Driver *driver;
         sql::Connection *conn;
         sql::ResultSet *res;
-        sql::Statement *stat;
+        sql::Statement *stmt;
+        sql::PreparedStatement* pstmt;
     
 
 };
