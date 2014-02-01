@@ -8,6 +8,7 @@
       <itemPath>include/Package.h</itemPath>
       <itemPath>include/Staff.h</itemPath>
       <itemPath>include/StaffGeneralMgr.h</itemPath>
+      <itemPath>mydb_class.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -20,6 +21,7 @@
       <itemPath>src/Staff.cpp</itemPath>
       <itemPath>src/StaffGeneralMgr.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>mydb_class.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -48,10 +50,19 @@
           </incDir>
         </cTool>
         <ccTool>
+          <commandlineTool>g++</commandlineTool>
           <incDir>
-            <pElem>include</pElem>
+            <pElem>/usr/lib/mysql</pElem>
+            <pElem>/usr/include</pElem>
+            <pElem>/usr/include/c++</pElem>
           </incDir>
         </ccTool>
+        <linkerTool>
+          <commandlineTool>g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <folder path="SourceFiles">
         <ccTool>
@@ -68,7 +79,11 @@
       </item>
       <item path="include/StaffGeneralMgr.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="main.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="mydb_class.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="mydb_class.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Client.cpp" ex="false" tool="0" flavor2="0">
       </item>
@@ -123,7 +138,11 @@
       </item>
       <item path="include/StaffGeneralMgr.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="main.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="mydb_class.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="mydb_class.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Client.cpp" ex="false" tool="0" flavor2="0">
       </item>
