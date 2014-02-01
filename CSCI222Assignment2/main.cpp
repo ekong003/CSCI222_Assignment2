@@ -18,7 +18,7 @@
  */
 int main(int argc, char** argv) {
     
-    //free hosting...
+    //free hosting. ..
     mydb_class mydb("sql2.freemysqlhosting.net","sql228692","tX6!fE6!");
     //fetching result from db
     sql::ResultSet *res = mydb.DbFetchArray("SELECT * from package");
