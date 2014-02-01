@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     //inserting data to db.
     //int val = mydb.DbInsert("INSERT INTO customer(customer_id,customer_name,customer_pwd) values('cino','Cino Jose','123')");
     //cout<<"Id is "<<val;
-    //updating record to db
+    //updating record to db 
    mydb.DbUpdate("UPDATE customer set customer_name='CINO' WHERE customer_id='cino'");
    cout<<"Sucessfully Updated"<<endl;
    //delete from db
