@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include <cppconn/resultset.h>
+//#include <cppconn/resultset.h>
 
 #include "mydb_class.h"
 
@@ -18,6 +18,7 @@
  */
 int main(int argc, char** argv) {
          
+    /*
     //free hosting..
     mydb_class mydb("sql2.freemysqlhosting.net","sql228692","tX6!fE6!");
     //fetching result from db
@@ -34,6 +35,7 @@ int main(int argc, char** argv) {
    //delete from db
    mydb.DbDelete("delete from customer where customer_id ='cino'");
    cout<<"Deleted Sucessfully"<<endl;
+     * /
    
 }
 

@@ -38,6 +38,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/mydb_class.o \
 	${OBJECTDIR}/src/Client.o \
+	${OBJECTDIR}/src/DisplayManager.o \
+	${OBJECTDIR}/src/Input.o \
+	${OBJECTDIR}/src/LoginManager.o \
 	${OBJECTDIR}/src/Staff.o \
 	${OBJECTDIR}/src/StaffGeneralMgr.o
 
@@ -60,11 +63,11 @@ LDLIBSOPTIONS=-lmysqlcppconn
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csci222a2
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csci222_assignment2
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csci222a2: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csci222_assignment2: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	g++ -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csci222a2 ${OBJECTFILES} ${LDLIBSOPTIONS}
+	g++ -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csci222_assignment2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -80,6 +83,21 @@ ${OBJECTDIR}/src/Client.o: src/Client.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Client.o src/Client.cpp
+
+${OBJECTDIR}/src/DisplayManager.o: src/DisplayManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/DisplayManager.o src/DisplayManager.cpp
+
+${OBJECTDIR}/src/Input.o: src/Input.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Input.o src/Input.cpp
+
+${OBJECTDIR}/src/LoginManager.o: src/LoginManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/LoginManager.o src/LoginManager.cpp
 
 ${OBJECTDIR}/src/Staff.o: src/Staff.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -97,7 +115,7 @@ ${OBJECTDIR}/src/StaffGeneralMgr.o: src/StaffGeneralMgr.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csci222a2
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csci222_assignment2
 
 # Subprojects
 .clean-subprojects:

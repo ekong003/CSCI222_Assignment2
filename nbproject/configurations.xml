@@ -5,6 +5,9 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>include/Client.h</itemPath>
+      <itemPath>include/DisplayManager.h</itemPath>
+      <itemPath>include/Input.h</itemPath>
+      <itemPath>include/LoginManager.h</itemPath>
       <itemPath>include/Package.h</itemPath>
       <itemPath>include/Staff.h</itemPath>
       <itemPath>include/StaffGeneralMgr.h</itemPath>
@@ -18,6 +21,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>src/Client.cpp</itemPath>
+      <itemPath>src/DisplayManager.cpp</itemPath>
+      <itemPath>src/Input.cpp</itemPath>
+      <itemPath>src/LoginManager.cpp</itemPath>
       <itemPath>src/Staff.cpp</itemPath>
       <itemPath>src/StaffGeneralMgr.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -73,6 +79,12 @@
       </folder>
       <item path="include/Client.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/DisplayManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Input.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/LoginManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/Package.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Staff.h" ex="false" tool="3" flavor2="0">
@@ -86,6 +98,12 @@
       <item path="mydb_class.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Client.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/DisplayManager.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/Input.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/LoginManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/Staff.cpp" ex="false" tool="0" flavor2="0">
         <cTool>
@@ -132,6 +150,12 @@
       </folder>
       <item path="include/Client.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/DisplayManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Input.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/LoginManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/Package.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/Staff.h" ex="false" tool="3" flavor2="0">
@@ -145,6 +169,12 @@
       <item path="mydb_class.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Client.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/DisplayManager.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/Input.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/LoginManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/Staff.cpp" ex="false" tool="0" flavor2="0">
         <cTool>
