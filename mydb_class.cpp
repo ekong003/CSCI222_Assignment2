@@ -8,8 +8,11 @@
 #include "mydb_class.h"
 #include <string>
 #include <vector>
+using namespace std;
 
-mydb_class::mydb_class(string host,string uname,string password) {
+namespace STB{
+    
+STB::mydb_class::mydb_class(std::string host,std::string uname,std::string password) {
    
   try {
       
@@ -100,3 +103,4 @@ mydb_class::~mydb_class() {
     
 }
 
+}

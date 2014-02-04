@@ -20,16 +20,16 @@
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
 
-using namespace std;
+namespace STB{
 
 class mydb_class {
 public:
-    mydb_class(string,string,string);
+    mydb_class(std::string,std::string,std::string);
     void DeleteConnection();
-    sql::ResultSet* DbFetchArray(string);
-    int DbInsert(string);
-    bool DbUpdate(string);
-    bool DbDelete(string);
+    sql::ResultSet* DbFetchArray(std::string);
+    int DbInsert(std::string);
+    bool DbUpdate(std::string);
+    bool DbDelete(std::string);
     virtual ~mydb_class();
 private:
         
@@ -42,5 +42,6 @@ private:
 
 };
 
+}
 #endif	/* MYDB_CLASS_H */
 

@@ -11,6 +11,7 @@
 #define	CLIENT_H
 
 #include "Package.h"
+
 #include <string>
 
 
@@ -35,6 +36,13 @@ public:
     // Booking
     // <param cPackage> Package details. </param>
     void BookPackage( const Package& cPackage );
+    
+    //View Package
+    void ViewPackage();
+   
+    //View Submissions
+    void ViewSubmission();
+    
         
     // Mutators
     void EditFirstName( std::string strNewName );
@@ -56,6 +64,7 @@ private:
     std::string  m_strFirstName;
     std::string  m_strLastName;
     std::string  m_strAddress;
+    //database connector object
 };
 
 
