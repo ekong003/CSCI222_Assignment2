@@ -9,6 +9,7 @@
 #include "LoginManager.h"
 #include "DisplayManager.h"
 #include <algorithm>
+#include <cppconn/resultset.h>
 #include <ctype.h>
 
 
@@ -53,19 +54,17 @@ std::string CaesarCipherAlgo::Decrypt( std::string strPassword ) const
 //=========================
 
 // Constructor
-LoginManager::LoginManager( const char* pFile, BaseEncryptionAlgo* pEncryptionAlgo ) :
-    m_pEncryptionFunc(pEncryptionAlgo) 
+LoginManager::LoginManager( BaseEncryptionAlgo* pEncryptionAlgo ) :
+    m_pEncryptionFunc(pEncryptionAlgo),
+    m_pDatabase( NULL )
 {
 }
 
 // Destructor
 LoginManager::~LoginManager() 
 {
-    if( m_pEncryptionFunc ) 
-    {
-        delete m_pEncryptionFunc;
-        m_pEncryptionFunc = NULL;
-    }
+    if( m_pEncryptionFunc ) { delete m_pEncryptionFunc; m_pEncryptionFunc = NULL; }
+    if( m_pDatabase )       { delete m_pDatabase; m_pDatabase = NULL; }
 }
 
 // Load file
@@ -73,7 +72,8 @@ bool LoginManager::LoadStaffDatabase()
 {
     bool bSuccess = true;
     
-    // TODO: CINO HOW DO I INCORPORATE MYSQL?
+    if( !m_pDatabase )
+        m_pDatabase = new mydb_class( "sql2.freemysqlhosting.net","sql228692","tX6!fE6!" );
     
     return bSuccess;
 }
@@ -108,6 +108,14 @@ bool LoginManager::VerifyLogin( int nStaffID, std::string strPassword )
     
     // Return true is password is correct
     return _GetEncryptedPassword( nStaffID ) == _EncryptPassword( strPassword );
+}
+
+Staff* LoginManager::GetUser( int nStaffID )
+{
+    Staff* pStaff = NULL;
+    // TODO
+    
+    return pStaff;
 }
 
 bool LoginManager::ChangePassword( int nStaffID, std::string strNewPassword )
@@ -181,6 +189,8 @@ bool LoginManager::_IsStaffValid( int nStaffID )
 {
     // <Cino - execute your query here>
     // <Function needs to return false if nStafffID cannot be found in the database>
+    
+    //sql::ResultSet* pResult = m_pDatabase->DbFetchArray( "Select * from ?? where ")
     
     return true;
 }

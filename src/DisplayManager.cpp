@@ -7,8 +7,11 @@
 //===================================================================
 
 #include "DisplayManager.h"
+#include "InputManager.h"
 #include <iomanip>
 #include <iostream>
+#include <sstream>
+#include <c++/4.6/bits/stl_vector.h>
 
 
 namespace STB
@@ -61,6 +64,78 @@ std::map<eTextStyle, std::string> DisplayManager::m_mapTextStyle
 //=============================
 //    Class DisplayManager    
 //=============================
+
+// Constructor
+DisplayManager::DisplayManager() {}
+
+// Destructor
+DisplayManager::~DisplayManager()
+{
+    std::map<Staff::eRole, std::vector<MenuComponent> >::iterator iter = m_mapMenuData.begin();
+    for( ; iter != m_mapMenuData.end(); ++iter )
+    {
+        std::vector<MenuComponent>& aMenuComponents = iter->second;
+        for( unsigned int i = 0; i < aMenuComponents.size(); ++i )
+        {
+            std::vector<IMenuEventHandler*>& aMenuHandlers = aMenuComponents[i].aSuscribers;
+            for( unsigned int j = 0; j < aMenuHandlers.size(); ++j )
+            {
+                if( aMenuHandlers[j] )
+                    delete aMenuHandlers[j];
+            }
+        }
+        aMenuComponents.clear();
+    }
+}
+
+int DisplayManager::AddMenuEntry( Staff::eRole eStaffRole, std::string strMenuLabel )
+{
+    MenuComponent cMenuComponent;
+    cMenuComponent.strLabel = strMenuLabel;
+    
+    m_mapMenuData[eStaffRole].push_back( cMenuComponent );
+    return m_mapMenuData[eStaffRole].size();
+}
+
+void DisplayManager::AddMenuSuscriber( Staff::eRole eStaffRole, int nMenuID, IMenuEventHandler* pHandler )
+{
+    int nSize = m_mapMenuData[eStaffRole].size();
+    
+    // Check if nMenuID is valid
+    if( nMenuID >= 1 && nMenuID <= nSize )
+        m_mapMenuData[eStaffRole][nMenuID - 1].aSuscribers.push_back( pHandler ); 
+}
+
+void DisplayManager::PromptMenuSelect( Staff::eRole eStaffRole )
+{
+    int nSize = m_mapMenuData[eStaffRole].size();
+    
+    std::stringstream ss;
+    ss << "Select a menu option [" << 1 << "-" << nSize << "]";
+    int nMenuID = InputManager::GetIntMinMax( ss.str(), 1, nSize );
+    
+    DisplayLogo();
+    Begin( BLUE, BOLD );
+    std::cout << "\n\nYou have selected "; 
+    Begin( RED, BOLD, YELLOW );        
+    std::cout << m_mapMenuData[eStaffRole][nMenuID - 1].strLabel << "\n\n";
+        
+    std::vector<IMenuEventHandler*>& aHandlers = m_mapMenuData[eStaffRole][nMenuID - 1].aSuscribers;
+    for( unsigned int i = 0; i < aHandlers.size(); ++i )
+        aHandlers[i]->OnMenuSelect();
+}
+
+// Display menu
+void DisplayManager::DisplayMenu( Staff::eRole eStaffRole )
+{
+    DisplayLogo();
+    
+    std::vector<MenuComponent>& vMenuList = m_mapMenuData[eStaffRole];    
+    Begin( GREEN, BOLD );
+    for( unsigned int i = 0; i < vMenuList.size(); ++i )
+        std::cout << "(" << i + 1 << ")\t" << vMenuList[i].strLabel << std::endl; 
+    End();
+}
 
 // Display text to console
 void DisplayManager::Print( std::string strMsg )
@@ -117,23 +192,38 @@ void DisplayManager::DisplayHeader( std::string strHeader, ePixelColor eTextColo
 {
     ClearScreen();
     
-    const int nBUFFER_SIZE = 80;
-    
+    const int nBUFFER_SIZE = 80;    
     std::cout << std::setiosflags( std::ios::right );
 	std::cout << "\E[1;" << m_mapTextColor[eTextColor] << ";" << m_mapBackgroundColor[eBackgroundColor] << "m";
     std::cout << "\n================================================================================\n";
-	
+	std::cout << std::setfill( ' ' ) << std::setw( nBUFFER_SIZE + 1 ) << "\n";
+    
 	// Align the header to the centre
 	if( strHeader.length() > nBUFFER_SIZE )
 		std::cout << std::setfill( ' ' ) << strHeader;
 	else
     {
-        int nPos = ( nBUFFER_SIZE - strHeader.length() ) / 2;
-        std::cout << std::setfill( ' ' ) << std::setw( strHeader.length() + nPos ) << strHeader;
-        std::cout << std::setfill( ' ' ) << std::setw( nPos ) << "";
+        int nPos = ( nBUFFER_SIZE + strHeader.length() ) / 2;
+        std::cout << std::setfill( ' ' ) << std::setw( nPos ) << strHeader;
+        std::cout << std::setfill( ' ' ) << std::setw( nBUFFER_SIZE - nPos ) << "";
     }	
     
+    std::cout << "\n" << std::setfill( ' ' ) << std::setw( nBUFFER_SIZE ) << "";
 	std::cout << "\n================================================================================\n\n\E[0m";
+}
+
+// Display the logo
+void DisplayManager::DisplayLogo()
+{
+    DisplayHeader( "SmartTravel Holidays Booking Management System" );
+}
+
+// Display text prompt msg
+void DisplayManager::DisplayPrompt( std::string strMsg, ePixelColor eTextColor )
+{
+    Begin( eTextColor, BOLD );
+    std::cout << "\n" << strMsg << ": ";
+    Begin( GREEN );
 }
 
 // Display exit message

@@ -11,6 +11,7 @@
 #define LOGIN_MANAGER_H
 
 #include "Staff.h"
+#include "mydb_class.h"
 #include <map>
 #include <string>
 
@@ -80,22 +81,10 @@ private:
 class LoginManager
 {
 public:
-    
-    // There are 2 kinds of users that access the POS system, the administrator
-    // and the cashier
-    struct LoginData
-    {
-        std::string Role;    // "admin" or "cashier"
-        std::string EncryptedPassword;    
         
-        // Constructor
-        LoginData() {};
-        LoginData( std::string strRole, std::string strPassword ) : Role( strRole ), EncryptedPassword( strPassword ) {}
-    };
-    
     // Constructor
-    // <param pFile> Admin file that contains the userID and encrypted password. </param>
-    LoginManager( const char* pFile, BaseEncryptionAlgo* pEncryptionAlgo );
+    // <param pEncryptionAlgo> What encryption algorithm to use. </param>
+    LoginManager( BaseEncryptionAlgo* pEncryptionAlgo );
 
     // Destructor
     ~LoginManager();
@@ -115,6 +104,11 @@ public:
     // <return>            True if the password is correct. </return>
     bool VerifyLogin( int nStaffID, std::string strPassword );
     
+    // Once the login is successful, we create an instance of the staff
+    // <param nStaffID> StaffID.                           </param>
+    // <return>         Null ptr if staff cannot be found. </return>
+    Staff* GetUser( int nStaffID );
+        
     // Changes the user's password. Note that the password will only change if it is valid.
     // Otherwise, this function will display a warning message.
     // <param nStaffID>       StaffID.          </param>
@@ -144,6 +138,7 @@ private:
     //   Data fields
     //=================
     BaseEncryptionAlgo*     m_pEncryptionFunc;   // Encryption algorithm
+    mydb_class*             m_pDatabase;         // Reference to the sql admin database
 };
 
 }  // End of namespace STB

@@ -82,7 +82,7 @@ inline void Staff::EditName    ( std::string strNewName )      { m_strName = str
 inline void Staff::EditPassword( std::string strNewPassword )  { m_strPassword = strNewPassword; }
 inline void Staff::EditRole    ( eRole eNewRole )              { m_eRole = eNewRole; }
 
-inline int          Staff::GetID() const                 { return m_nStaffID; }
+inline int          Staff::GetID()   const               { return m_nStaffID; }
 inline std::string  Staff::GetName() const               { return m_strName; }
 inline Staff::eRole Staff::GetRole() const               { return m_eRole; }
 

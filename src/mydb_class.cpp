@@ -1,15 +1,18 @@
-/* 
- * File:   mydb_class.cpp
- * Author: cino
- * 
- * Created on January 31, 2014, 12:39 PM
- */
+/*
+* File: mydb_class.cpp
+* Author: cino
+*
+* Created on January 31, 2014, 12:39 PM
+*/
 
 #include "mydb_class.h"
 #include <string>
 #include <vector>
+using namespace std;
 
-mydb_class::mydb_class(string host,string uname,string password) {
+namespace STB{
+    
+STB::mydb_class::mydb_class(std::string host,std::string uname,std::string password) {
    
   try {
       
@@ -83,7 +86,7 @@ bool mydb_class::DbDelete(string query){
         cout<<" (MYSQL error code :"<<e.getErrorCode();
         cout<<" , SQLState :"<<e.getSQLState()<<" )"<<endl;
     }
-    return val; 
+    return val;
 }
 void mydb_class::DeleteConnection(){
     
@@ -100,3 +103,4 @@ mydb_class::~mydb_class() {
     
 }
 
+}

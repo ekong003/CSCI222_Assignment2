@@ -4,14 +4,15 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>include/BookingSystemManager.h</itemPath>
       <itemPath>include/Client.h</itemPath>
       <itemPath>include/DisplayManager.h</itemPath>
-      <itemPath>include/Input.h</itemPath>
+      <itemPath>include/InputManager.h</itemPath>
       <itemPath>include/LoginManager.h</itemPath>
       <itemPath>include/Package.h</itemPath>
       <itemPath>include/Staff.h</itemPath>
       <itemPath>include/StaffGeneralMgr.h</itemPath>
-      <itemPath>mydb_class.h</itemPath>
+      <itemPath>include/mydb_class.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -20,14 +21,15 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>src/BookingSystemManager.cpp</itemPath>
       <itemPath>src/Client.cpp</itemPath>
       <itemPath>src/DisplayManager.cpp</itemPath>
-      <itemPath>src/Input.cpp</itemPath>
+      <itemPath>src/InputManager.cpp</itemPath>
       <itemPath>src/LoginManager.cpp</itemPath>
       <itemPath>src/Staff.cpp</itemPath>
       <itemPath>src/StaffGeneralMgr.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
-      <itemPath>mydb_class.cpp</itemPath>
+      <itemPath>src/mydb_class.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -77,11 +79,13 @@
           </incDir>
         </ccTool>
       </folder>
+      <item path="include/BookingSystemManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/Client.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/DisplayManager.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="include/Input.h" ex="false" tool="3" flavor2="0">
+      <item path="include/InputManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/LoginManager.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -91,17 +95,17 @@
       </item>
       <item path="include/StaffGeneralMgr.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/mydb_class.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="mydb_class.cpp" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="mydb_class.h" ex="false" tool="3" flavor2="0">
+      <item path="src/BookingSystemManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/Client.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/DisplayManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="src/Input.cpp" ex="false" tool="0" flavor2="0">
+      <item path="src/InputManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/LoginManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
@@ -113,6 +117,8 @@
         </cTool>
       </item>
       <item path="src/StaffGeneralMgr.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/mydb_class.cpp" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -131,7 +137,9 @@
         <ccTool>
           <developmentMode>5</developmentMode>
           <incDir>
-            <pElem>include</pElem>
+            <pElem>/usr/lib/mysql</pElem>
+            <pElem>/usr/include</pElem>
+            <pElem>/usr/include/c++</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>
@@ -140,6 +148,11 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <folder path="SourceFiles">
         <ccTool>
@@ -148,11 +161,13 @@
           </incDir>
         </ccTool>
       </folder>
+      <item path="include/BookingSystemManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/Client.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/DisplayManager.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="include/Input.h" ex="false" tool="3" flavor2="0">
+      <item path="include/InputManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/LoginManager.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -162,17 +177,17 @@
       </item>
       <item path="include/StaffGeneralMgr.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/mydb_class.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="mydb_class.cpp" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="mydb_class.h" ex="false" tool="3" flavor2="0">
+      <item path="src/BookingSystemManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/Client.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/DisplayManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="src/Input.cpp" ex="false" tool="0" flavor2="0">
+      <item path="src/InputManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/LoginManager.cpp" ex="false" tool="0" flavor2="0">
       </item>
@@ -184,6 +199,8 @@
         </cTool>
       </item>
       <item path="src/StaffGeneralMgr.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/mydb_class.cpp" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>

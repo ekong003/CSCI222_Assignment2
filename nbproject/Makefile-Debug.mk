@@ -36,13 +36,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/mydb_class.o \
+	${OBJECTDIR}/src/BookingSystemManager.o \
 	${OBJECTDIR}/src/Client.o \
 	${OBJECTDIR}/src/DisplayManager.o \
-	${OBJECTDIR}/src/Input.o \
+	${OBJECTDIR}/src/InputManager.o \
 	${OBJECTDIR}/src/LoginManager.o \
 	${OBJECTDIR}/src/Staff.o \
-	${OBJECTDIR}/src/StaffGeneralMgr.o
+	${OBJECTDIR}/src/StaffGeneralMgr.o \
+	${OBJECTDIR}/src/mydb_class.o
 
 
 # C Compiler Flags
@@ -74,10 +75,10 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} "$@.d"
 	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/mydb_class.o: mydb_class.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/BookingSystemManager.o: src/BookingSystemManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mydb_class.o mydb_class.cpp
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BookingSystemManager.o src/BookingSystemManager.cpp
 
 ${OBJECTDIR}/src/Client.o: src/Client.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -89,10 +90,10 @@ ${OBJECTDIR}/src/DisplayManager.o: src/DisplayManager.cpp
 	${RM} "$@.d"
 	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/DisplayManager.o src/DisplayManager.cpp
 
-${OBJECTDIR}/src/Input.o: src/Input.cpp 
+${OBJECTDIR}/src/InputManager.o: src/InputManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Input.o src/Input.cpp
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/InputManager.o src/InputManager.cpp
 
 ${OBJECTDIR}/src/LoginManager.o: src/LoginManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -108,6 +109,11 @@ ${OBJECTDIR}/src/StaffGeneralMgr.o: src/StaffGeneralMgr.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/StaffGeneralMgr.o src/StaffGeneralMgr.cpp
+
+${OBJECTDIR}/src/mydb_class.o: src/mydb_class.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/mydb_class.o src/mydb_class.cpp
 
 # Subprojects
 .build-subprojects:

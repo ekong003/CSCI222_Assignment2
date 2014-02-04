@@ -7,7 +7,7 @@
 */
 //===================================================================
 
-#include "Input.h"
+#include "InputManager.h"
 #include "DisplayManager.h"
 #include <algorithm>
 #include <iostream>
@@ -18,96 +18,106 @@
 namespace STB
 {
 
-//==============================
-//    Class ConsoleTextInput
-//==============================
-BaseInput::BaseInput()	{}
-BaseInput::~BaseInput() {}
+//==========================
+//    Class InputManager 
+//==========================
 
-
-
-//==============================
-//    Class ConsoleTextInput
-//==============================
-int ConsoleTextInput::GetInt()
+// Get user input
+int InputManager::GetInt( std::string strPrompt )
 {
-	int i = 0;
+    DisplayManager::DisplayPrompt( strPrompt );
+    
+    int i = 0;
 	while( !( std::cin >> i ) ) 
 	{    
 		std::cin.clear();
 		std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-        DisplayManager::Print( "\nYou have entered an invalid integer, please try again: ", RED );
+        DisplayManager::DisplayPrompt( "You have entered an invalid integer, please try again", RED );
 	}
 
+    DisplayManager::End();
 	std::cin.clear();
 	std::cin.ignore( 256, '\n' );
 	return i;
 }
 
-int ConsoleTextInput::GetIntMinMax( int nMin, int nMax )
+int InputManager::GetIntMinMax( std::string strPrompt, int nMin, int nMax )
 {
-	int i = 0;
+    DisplayManager::DisplayPrompt( strPrompt );
+    
+    int i = 0;
 	while( !( std::cin >> i ) || i < nMin || i > nMax ) 
 	{   
 		std::cin.clear();
 		std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
         DisplayManager::Begin( RED );
 		std::cout << "\nYou need to key in an integer in the range [" << nMin << "-" << nMax << "], please try again: ";
-        DisplayManager::End();
+        DisplayManager::Begin( GREEN );
 	}
 
+    DisplayManager::End();
 	std::cin.clear();
 	std::cin.ignore( 256, '\n' );
 	return i;
 }
-
-unsigned int ConsoleTextInput::GetUnsignedInt()
+    
+unsigned InputManager::GetUnsignedInt( std::string strPrompt )
 {
-	unsigned int i = 0;
+    DisplayManager::DisplayPrompt( strPrompt );
+    
+    unsigned int i = 0;
 	while( !( std::cin >> i ) ) 
 	{    
 		std::cin.clear();
 		std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-		DisplayManager::Print( "\nYou need to enter a positive integer, please try again: ", RED );
+        DisplayManager::DisplayPrompt( "You need to enter a positive integer, please try again", RED );
 	}
 
+    DisplayManager::End();
 	std::cin.clear();
 	std::cin.ignore( 256, '\n' );
 	return i;
 }
 
-float ConsoleTextInput::GetFloat()
+float InputManager::GetFloat( std::string strPrompt )
 {
-	float i = 0;
+    DisplayManager::DisplayPrompt( strPrompt );
+    
+    float i = 0;
 	while( !( std::cin >> i ) ) 
 	{    
 		std::cin.clear();
 		std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-		DisplayManager::Print( "\nYou need to a float: ", RED );
+		DisplayManager::DisplayPrompt( "You need to a float", RED );
 	}
 
+    DisplayManager::End();
 	std::cin.clear();
 	std::cin.ignore( 256, '\n' );
 	return i;
 }
-
-std::string ConsoleTextInput::GetString()
+    
+std::string	InputManager::GetString( std::string strPrompt )
 {
-	std::string s;
+    DisplayManager::DisplayPrompt( strPrompt );
+    std::string s;
 	std::getline( std::cin, s );
 	
 	std::cin.clear();
 	//std::cin.ignore( 256, '\n' );
 	return s;
 }
-
-bool ConsoleTextInput::GetYesOrNo()
+    
+bool InputManager::GetYesOrNo( std::string strPrompt )
 {
+    DisplayManager::DisplayPrompt( strPrompt );
+    
     bool bOutput = true;
-
     while( true )
     {
-        std::string s = GetString();
+        std::string s;
+        std::getline( std::cin, s );	
+        std::cin.clear();
 
         // Convert string to lower case
         std::transform( s.begin(), s.end(), s.begin(), ::tolower );
@@ -119,8 +129,10 @@ bool ConsoleTextInput::GetYesOrNo()
             break;
         }
         else
-            DisplayManager::Print( "\nInvalid input, you need to key in either 'Y' or 'No': ", RED );
+            DisplayManager::DisplayPrompt( "Invalid input, you need to key in either 'Y' or 'No'", RED );
     }
+    
+    DisplayManager::End();
     return bOutput;
 }
 
